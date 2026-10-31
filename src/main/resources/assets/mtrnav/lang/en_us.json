@@ -364,5 +364,10 @@
   "mtrnav.directory_other": "Other",
   "mtrnav.directory_unknown_distance": "Distance unknown",
   "mtrnav.directory_selected": "Selected: %s · Use a button below",
-  "mtrnav.directory_index_hint": "Jump by English name or supported Chinese pinyin initial. # means numbers; unsupported initials use Other."
+  "mtrnav.directory_index_hint": "Jump by English name or supported Chinese pinyin initial. # means numbers; unsupported initials use Other.",
+  "mtrnav.map_ready": "Map: journey highlighted; completed rides dimmed",
+  "mtrnav.map_loading": "Map: resolving journey sections…",
+  "mtrnav.map_waiting": "Map: waiting for Overlay server catalog (1.5.3+)",
+  "mtrnav.map_unavailable": "Map: exact journey geometry unavailable",
+  "mtrnav.map_ambiguous": "Map: multiple native paths; journey cannot be highlighted"
 }

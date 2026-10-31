@@ -364,5 +364,10 @@
   "mtrnav.directory_other": "其他",
   "mtrnav.directory_unknown_distance": "距离未知",
   "mtrnav.directory_selected": "已选：%s · 点击底部按钮使用",
-  "mtrnav.directory_index_hint": "按英文名或常用汉字拼音首字母跳转；数字归#，无法归组的归其他。"
+  "mtrnav.directory_index_hint": "按英文名或常用汉字拼音首字母跳转；数字归#，无法归组的归其他。",
+  "mtrnav.map_ready": "地图：行程已高亮，已完成乘车段淡化",
+  "mtrnav.map_loading": "地图：正在解析行程区段…",
+  "mtrnav.map_waiting": "地图：等待 Overlay 1.5.3+ 服务端目录",
+  "mtrnav.map_unavailable": "地图：暂无此行程的精确轨道",
+  "mtrnav.map_ambiguous": "地图：存在多条原生路径，暂无法高亮"
 }

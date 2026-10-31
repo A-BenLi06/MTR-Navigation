@@ -20,6 +20,8 @@ repositories { mavenCentral() }
 def mtrJar = file('.cache/downloads/MTR-neoforge-4.1.0-beta.2+1.21.1.jar')
 dependencies {
     compileOnly files(mtrJar)
+    compileOnly files('.cache/downloads/mtrmap-api-1.0.0.jar')
+    testImplementation files('.cache/downloads/mtrmap-api-1.0.0.jar')
     testImplementation files(mtrJar)
     testImplementation platform('org.junit:junit-bom:5.10.2')
     testImplementation 'org.junit.jupiter:junit-jupiter'

@@ -69,6 +69,8 @@ public final class NavigationClient {
         if (connection != current || !dimension.equals(dim)) {
             reset(); connection = current; dimension = dim; startedNanos = System.nanoTime();
         }
+        OverlaySupport.initialize(mc::execute, NavigationClient::openFromMap);
+        OverlaySupport.tick(dim, tracking, catalog);
         if (mc.player == null || mc.level == null) return;
         long now = System.nanoTime();
         tickReminder(now);
@@ -88,6 +90,7 @@ public final class NavigationClient {
         }
     }
     public static void reset() {
+        OverlaySupport.reset(); OverlayBridge.reset();
         originLocation.reset(); WalkingClient.reset(); fastestArrival = 0; partialResults = false;
         catalog = null; journeys = List.of(); referencePlan = null; referenceReason = ""; arrivals = List.of(); tracking = null; reminder = null;
         boardLoading = false; boardUpdatedNanos = boardSampleMillis = 0; pollContexts.clear(); ReminderHud.reset();
@@ -96,6 +99,17 @@ public final class NavigationClient {
         oldestResponseId = nextId + 1; lastCatalogId = lastHello = 0;
         assembly.clear(); CLOCK.clear(); NavigationApi.cancel();
         NativeMtrClient.reset(); usingNative = false;
+    }
+    private static void openFromMap(String targetDimension, String stationId) {
+        var mc = Minecraft.getInstance();
+        if (mc.player == null || !dimension.equals(targetDimension)) return;
+        if (catalog == null) catalog = OverlaySupport.catalog(targetDimension);
+        if (catalog == null || catalog.station(stationId) == null) return;
+        destination = stationId;
+        clearSearchResults();
+        NativeMtrClient.opened();
+        // An explicit map action opens the query page, even when another journey is active.
+        mc.setScreen(new NavigationScreen(true));
     }
     public static void query() {
         if (origin.isEmpty() || destination.isEmpty()) { status = "mtrnav.choose_stations"; return; }

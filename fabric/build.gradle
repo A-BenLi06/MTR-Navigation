@@ -15,6 +15,7 @@ dependencies {
     modImplementation 'net.fabricmc:fabric-loader:0.16.14'
     modImplementation 'net.fabricmc.fabric-api:fabric-api:0.116.17+1.21.1'
     modCompileOnly files('../.cache/downloads/MTR-fabric-4.1.0-beta.2+1.21.1.jar')
+    compileOnly files('../.cache/downloads/mtrmap-api-1.0.0.jar')
     if (project.hasProperty('runtimeMtr')) modRuntimeOnly files('../.cache/downloads/MTR-fabric-4.1.0-beta.2+1.21.1.jar')
 }
 sourceSets.main.java.srcDir('../src/main/java')

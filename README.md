@@ -37,6 +37,7 @@ MTR：站间物语是一个独立的 Minecraft Transit Railway 导航附属模�
 - **看班次**：到发页按线路分组，展开查看已同步的班次，分别显示到达与发车倒计时，以及来源提供的实时／计划标识。
 - **设提醒**：点击具体班次，默认到站前 **9 分钟**提醒，可调为 **1～60 分钟**。关闭窗口后继续更新，顶部通知条在触发时展开并播放一次提示音。
 - **途中导航**：开始行程后，由 HUD 提示下一操作；可手动确认上车、下车或返回上一步，也可调整 HUD 的位置和大小。
+- **地图行程**：可选接入 MTR Map Overlay 1.5.3+，在 Xaero／JourneyMap 高亮精确乘车区段；已完成段保留35%亮度，其他轨道15%。点击地图车站的 **Navigate** 可预填导航终点。
 - **看线路参考**：有换乘路径但暂时找不到可乘班次时，仍展示线路连接，并说明无班次、超出范围或计算未完成；不编造到发时间。
 
 ## 实际界面
@@ -89,7 +90,7 @@ MTR：站间物语是一个独立的 Minecraft Transit Railway 导航附属模�
 
 - **服务端只有 MTR**：客户端尝试通过 MTR 原生地图服务获取线路和到发数据。该服务必须可用，行程进度需手动确认。
 - **服务端也安装本模组**：使用专用全网查询服务；只有可靠关联到玩家乘坐的车辆时，才使用自动进度，否则继续提供手动校正。
-- **MTR Map Overlay 是可选兼容项**：可以只读复用其已经同步的车站目录，但地图快照不能代替班次时刻。已有 Overlay 不代表原生时刻服务必然可用。
+- **MTR Map Overlay 是可选兼容项**：1.5.3+ 的公共 API 支持地图行程高亮和车站 Navigate 入口。精确高亮需要客户端、服务端都有对应版本的 Overlay，并能提供原生目录和路径。仅客户端安装或旧版仍可使用 Navigation，地图快照不能代替班次时刻。
 
 仓库名为 `MTR-Navigation`，模组 ID 为 `mtrnav`。当前查询仅支持**本维度的铁路客运**。
 
@@ -164,7 +165,7 @@ MTR：站间物语是一个独立的 Minecraft Transit Railway 导航附属模�
 - [验证记录](docs/validation/verification.md)：已完成的构建、回归、实测及尚未覆盖的边界。
 - [早期布局演示](docs/ui-preview/README.md)：浏览器原型与示例数据，供布局讨论使用，不代表当前界面截图。
 
-`NavigationApi` 发布不可变的 `JourneySelection`，不要求 Overlay 成为硬依赖。**实际地图区间高亮尚未实现**；线路参考及班次提醒不会替换活动导航的地图选择。
+`NavigationApi` 继续发布不可变的 v1 `JourneySelection`。新增可选适配器通过 Overlay 公共 API 解析原生区段、提交独立地图视图并按乘车段推进更新淡化；无须修改 Overlay。无法确认站台身份、多路径歧义或目录过期时显示原因并清除旧高亮。线路参考及班次提醒不会替换活动导航的地图选择。详见[联动说明](docs/overlay-integration.md)。
 
 ### 从源码构建
 
@@ -194,7 +195,7 @@ An untouched, empty origin is located automatically once per connection; the cro
 
 Click a train on the arrivals board to set a reminder, **9 minutes before arrival** by default, adjustable from 1 to 60 minutes. A compact notification, at the top centre by default, expands when triggered. The shared **HUD** settings page edits the navigation and reminder panels separately: drag either preview, scroll to resize it, or choose a corner preset. Their positions and sizes are saved independently. Expanded reminder space is reserved to prevent overlap; very small windows may temporarily shrink both panels. Keep-expanded mode is available in the same page. Stale or ambiguous data pauses the reminder; it never silently switches to the next train. One reminder is retained per connection and is cleared on disconnect or dimension change.
 
-Native compatibility mode cannot reliably identify the player's actual train, so journey progress needs manual confirmation. Live and scheduled labels follow the source data. Queries cover passenger rail in the current dimension; a route reference without confirmed train times cannot start a timed journey. Full-day timetables and map-track highlighting are not included.
+Native compatibility mode cannot reliably identify the player's actual train, so journey progress needs manual confirmation. Live and scheduled labels follow the source data. Queries cover passenger rail in the current dimension; a route reference without confirmed train times cannot start a timed journey. Full-day timetables are not included. Optional MTR Map Overlay 1.5.3+ integration highlights native ride sections on Xaero/JourneyMap, dims completed rides to 35% and unused tracks to 15%, and prefills the destination from a station's Navigate action. Exact highlighting requires Overlay's server catalog and an unambiguous native path; walking links and progress within a ride are not drawn as rail geometry.
 
 New queries return up to **five distinct route patterns**, with a default extra-arrival window of **30 minutes** (15 / 30 / 60 / unlimited). Explicit walking links can be managed in-game and imported or exported as JSON. Walking durations and the boarding buffer are counted separately; walking progress requires manual confirmation. Nearby stations are never automatically assumed to have a passable connection.
 

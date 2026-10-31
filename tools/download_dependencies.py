@@ -64,3 +64,5 @@ if __name__ == '__main__':
             'NEOFORGE-4.1.0-beta.2+1.21.1', 'FABRIC-4.1.0-beta.2+1.21.1'}]), encoding='utf-8')
     for version in json.loads(metadata.read_text(encoding='utf-8-sig')):
         download(version)
+    from download_overlay_api import download as download_overlay_api
+    download_overlay_api()

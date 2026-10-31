@@ -11,7 +11,10 @@ public final class OverlayBridge {
     private static Class<?> cache;
     private static Object lastSnapshot;
     private static Catalog lastCatalog;
+    public static void reset() { lastSnapshot = null; lastCatalog = null; }
     public static Catalog catalog(String dimension) {
+        var publicCatalog = OverlaySupport.catalog(dimension);
+        if (publicCatalog != null) return publicCatalog;
         if (!checked) {
             checked = true;
             try { cache = Class.forName("io.github.teamcreating.mtrmap.mapdata.MapDataCache"); }

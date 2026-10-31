@@ -61,6 +61,10 @@ public final class NavigationScreen extends Screen {
     private List<DepartureBoard.Group> boardGroups = List.of();
 
     public NavigationScreen() { super(Component.translatable("mtrnav.title")); }
+    public NavigationScreen(boolean queryFromMap) {
+        this();
+        if (queryFromMap) { view = View.JOURNEYS; searchCollapsed = false; }
+    }
     boolean wantsBoard() { return view == View.DEPARTURES; }
     private Action button(String key, int x, int y, int w, int h, Runnable action) {
         var b = new Action(x, y, w, h, tr(key), action);
@@ -528,6 +532,7 @@ public final class NavigationScreen extends Screen {
         if (view == View.ACTIVE && tracking != null) {
             journey = tracking.journey();
             rows.add(new Row(tr("mtrnav.phase." + tracking.phase().name().toLowerCase(Locale.ROOT)), ACCENT, 21, 1));
+            if (!OverlaySupport.status().isEmpty()) wrap(rows, tr(OverlaySupport.status()), width, MUTED);
             if (tracking.phase() == JourneyTracker.Phase.COMPLETE) wrap(rows, tr("mtrnav.arrived_at", station(journey.destinationStationId())), width, ACCENT);
             else if (tracking.walk() != null) {
                 var walk = tracking.walk();

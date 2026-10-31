@@ -32,6 +32,7 @@ public final class NativeMtrClient {
     private static String dimension = "";
     private static volatile long epoch;
     private static long queryGeneration, requestSequence, lastCatalog, lastDepartures, lastBoard, lastReminder, lastSample;
+    private static Long overlayIdentityRevision;
     private static int dimensionIndex;
     private static boolean dimensionResolved, waitingQuery;
     private static NativeTimetable.Network network;
@@ -59,6 +60,7 @@ public final class NativeMtrClient {
         search.getQueue().clear(); decoding.getQueue().clear();
         network = null; timetable = null; tracker = null; dimension = ""; dimensionResolved = false;
         dimensionIndex = 0; lastCatalog = lastDepartures = lastBoard = lastReminder = lastSample = 0;
+        overlayIdentityRevision = null;
     }
     public static void tick(String currentDimension) {
         if (!dimension.equals(currentDimension)) { reset(); dimension = currentDimension; }
@@ -69,6 +71,9 @@ public final class NativeMtrClient {
         var expired = pending.entrySet().stream().filter(e -> now - e.getValue().started() > 8_000_000_000L).map(Map.Entry::getKey).toList();
         if (!expired.isEmpty()) { fail("Native timetable request timed out", null); return; }
         Catalog overlay = OverlayBridge.catalog(dimension);
+        if (overlay != null && !overlay.routes().isEmpty() && !Objects.equals(overlayIdentityRevision, overlay.revision())) {
+            overlayIdentityRevision = overlay.revision(); lastCatalog = 0;
+        }
         if (network == null && overlay != null && !overlay.stations().isEmpty()) {
             NavigationClient.catalog = overlay; NavigationClient.status = "mtrnav.loading_times";
         }
@@ -110,6 +115,7 @@ public final class NativeMtrClient {
             for (var route : data.simplifiedRoutes) result.put(Long.toHexString(route.getId()), route.getPlatforms().stream()
                     .map(p -> new NativeTimetable.PlatformIdentity(Long.toHexString(p.getPlatformId()), Long.toHexString(p.getStationId()))).toList());
         }
+        result.putAll(OverlaySupport.platforms(dimension));
         return result;
     }
     private static void departures() {
