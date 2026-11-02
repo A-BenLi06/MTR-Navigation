@@ -52,3 +52,6 @@ processResources {
     filesMatching('META-INF/neoforge.mods.toml') { expand(version: project.version) }
 }
 jar { from('LICENSE', 'NOTICE'); manifest.attributes('MixinConfigs': 'mtrnav.mixins.json') }
+
+// Opt-in local Java client control. Never included in the production mod JAR.
+if (project.hasProperty('runtimeQa')) apply from: 'gradle/runtime-qa.gradle'

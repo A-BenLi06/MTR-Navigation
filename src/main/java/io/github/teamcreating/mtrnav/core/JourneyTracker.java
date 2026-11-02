@@ -20,6 +20,8 @@ public final class JourneyTracker {
     private int legIndex;
     private Phase phase = Phase.WAITING;
     private String notice = "";
+    private RunKey boardedRun;
+    private String boardedVehicle = "";
     public JourneyTracker(Journey journey) { this.journey = journey; phaseForStep(); }
     public State update(Snapshot snapshot, UUID player) {
         if (journey.revision() != snapshot.catalog().revision()) {
@@ -27,13 +29,24 @@ public final class JourneyTracker {
             return state(false);
         }
         if (phase == Phase.WALKING) {
-            var walk = state(false).walk();
-            notice = walk != null && snapshot.sampleMillis() > walk.arrival() + 30_000 ? "walk_overdue" : "manual_walk";
-            if (legIndex < journey.legs().size()) {
-                refresh(snapshot);
-                if (snapshot.sampleMillis() > journey.legs().get(legIndex).departure()) notice = "missed_train";
+            // Actual boarding of the intended native run proves the transfer was completed.
+            // Mere station proximity or the walking timer still never advances a walk.
+            var riding = snapshot.riders().get(player);
+            var next = legIndex < journey.legs().size() ? journey.legs().get(legIndex) : null;
+            boolean boardedNext = next != null && riding != null && !next.vehicleId().isEmpty()
+                    && next.vehicleId().equals(riding.vehicleId()) && next.run().equals(riding.run())
+                    && next.routeId().equals(riding.routeId()) && riding.stopIndex() >= next.fromStopIndex() && riding.stopIndex() <= next.toStopIndex();
+            if (boardedNext) {
+                while (phase == Phase.WALKING) advance();
+            } else {
+                var walk = state(false).walk();
+                notice = walk != null && snapshot.sampleMillis() > walk.arrival() + 30_000 ? "walk_overdue" : "manual_walk";
+                if (legIndex < journey.legs().size()) {
+                    refresh(snapshot);
+                    if (snapshot.sampleMillis() > journey.legs().get(legIndex).departure()) notice = "missed_train";
+                }
+                return state(false);
             }
-            return state(false);
         }
         if (journey.legs().isEmpty() || legIndex >= journey.legs().size()) { phase = Phase.COMPLETE; return state(true); }
         var leg = journey.legs().get(legIndex);
@@ -43,9 +56,26 @@ public final class JourneyTracker {
         refresh(snapshot); leg = journey.legs().get(legIndex);
         boolean matched = riding != null && !leg.vehicleId().isEmpty() && leg.vehicleId().equals(riding.vehicleId()) && leg.run().equals(riding.run());
         if (matched && riding.routeId().equals(leg.routeId()) && riding.stopIndex() >= leg.fromStopIndex() && riding.stopIndex() <= leg.toStopIndex()) {
+            boardedRun = leg.run(); boardedVehicle = leg.vehicleId();
             phase = Phase.RIDING;
             notice = riding.stopIndex() == leg.toStopIndex() ? "alight_next" : "on_route";
             if (riding.stopIndex() == leg.toStopIndex() && riding.atPlatform()) notice = "alight_now";
+        } else if (phase == Phase.RIDING && riding != null && riding.atPlatform() && leg.run().equals(boardedRun)
+                && riding.vehicleId().equals(boardedVehicle) && riding.platformId().equals(leg.toPlatformId())
+                && to != null && to.realtime() && to.arrival() <= snapshot.sampleMillis() + 5_000 && to.departure() >= snapshot.sampleMillis() - 500) {
+            // Core can switch to the successor route at a shared terminal while the rider is still aboard.
+            notice = "alight_now";
+            return state(true);
+        } else if (phase == Phase.RIDING && riding != null && !riding.atPlatform()
+                && leg.run().equals(boardedRun) && riding.vehicleId().equals(boardedVehicle)
+                && (riding.run() == null || riding.run().sidingId().equals(leg.run().sidingId())
+                    && riding.run().departureIndex() == leg.run().departureIndex()
+                    && (riding.run().departureOffset() == leg.run().departureOffset() || riding.run().departureOffset() == leg.run().departureOffset() + 1))
+                && to != null && to.realtime() && snapshot.sampleMillis() <= to.departure() + 500) {
+            // Core clears or advances route metadata before terminal doors open. The same
+            // native passenger/vehicle remains authoritative within the boarded run's window.
+            notice = "on_route";
+            return state(true);
         } else if (riding != null && (riding.run() != null || !leg.vehicleId().equals(riding.vehicleId()))) {
             notice = "wrong_train";
         } else if (riding != null) {
@@ -64,13 +94,13 @@ public final class JourneyTracker {
         switch (action) {
             case "board" -> { if (phase != Phase.COMPLETE && phase != Phase.WALKING) phase = Phase.RIDING; }
             case "next" -> advance();
-            case "previous" -> { stepIndex = Math.max(0, stepIndex - 1); phaseForStep(); }
+            case "previous" -> { stepIndex = Math.max(0, stepIndex - 1); phaseForStep(); boardedRun = null; boardedVehicle = ""; }
             default -> { }
         }
         return state(false);
     }
     public State state(boolean reliable) { return new State(journey, legIndex, phase, notice, reliable, stepIndex); }
-    private void advance() { stepIndex = Math.min(stepIndex + 1, journey.steps().size()); phaseForStep(); notice = ""; }
+    private void advance() { stepIndex = Math.min(stepIndex + 1, journey.steps().size()); phaseForStep(); notice = ""; boardedRun = null; boardedVehicle = ""; }
     private void phaseForStep() {
         var steps = journey.steps();
         if (stepIndex >= steps.size()) { legIndex = journey.legs().size(); phase = Phase.COMPLETE; return; }

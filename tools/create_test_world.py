@@ -2,9 +2,14 @@
 from pathlib import Path
 import gzip
 import struct
+import sys
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET = ROOT / 'run' / 'saves' / 'NavTest'
+name = sys.argv[1] if len(sys.argv) > 1 else 'NavTest'
+if not re.fullmatch(r'[A-Za-z0-9_-]+', name):
+    raise SystemExit('Use a simple world directory name')
+TARGET = ROOT / 'run' / 'saves' / name
 
 def string(value):
     data = value.encode('utf-8')

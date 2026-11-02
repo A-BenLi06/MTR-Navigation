@@ -1,0 +1,18 @@
+sourceSets {
+    runtimeQa {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+dependencies {
+    runtimeQaCompileOnly files('.cache/downloads/CRTools-MTR-Map-Overlay-1.5.3-MC1.21.1-MTR4.1.0-beta.2-neoforge.jar')
+}
+neoForge {
+    mods { mtrnavqa { sourceSet sourceSets.runtimeQa } }
+    runs {
+        client {
+            systemProperty 'mtrnav.qa.port', '18761'
+            systemProperty 'mtrnav.qa.output', rootProject.file('build/runtime-ride').absolutePath
+        }
+    }
+}

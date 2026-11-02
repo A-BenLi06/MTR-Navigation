@@ -113,4 +113,43 @@ class NavigationCoreTest {
         assertThrows(java.io.IOException.class, () -> assembly.accept(2, 0, 9999, bytes, 30));
         assertThrows(java.io.IOException.class, () -> WireCodec.decode(new byte[]{1, 2, 3}));
     }
+    @Test void nativeSuccessorRouteAtSharedTerminalStillRecognizesAlighting() {
+        var source=example();var journey=planner.find(source,"滨海北","甘地",Sort.FASTEST,Settings.defaults()).getFirst();
+        var leg=journey.legs().getFirst();var player=UUID.randomUUID();var tracker=new JourneyTracker(journey);
+        var onboard=new Riding(leg.vehicleId(),leg.routeId(),leg.fromPlatformId(),leg.fromStopIndex(),true,leg.run());
+        tracker.update(new Snapshot(source.catalog(),leg.departure(),source.events(),Map.of(player,onboard)),player);
+        var successor=new Riding(leg.vehicleId(),"successor",leg.toPlatformId(),0,true,new RunKey(leg.run().sidingId(),1,leg.run().departureIndex(),leg.run().departureOffset()));
+        var state=tracker.update(new Snapshot(source.catalog(),leg.arrival(),source.events(),Map.of(player,successor)),player);
+        assertEquals("alight_now",state.notice());assertTrue(state.reliable());
+        state=tracker.update(new Snapshot(source.catalog(),leg.arrival()+1000,source.events(),Map.of()),player);
+        assertEquals(1,state.legIndex());
+    }
+    @Test void actualMatchingNextTrainCompletesTransferWalkWithoutManualCorrection() {
+        var source=example();var original=planner.find(source,"滨海北","甘地",Sort.FASTEST,Settings.defaults()).getFirst();
+        var walk=new WalkLeg("native-transfer","南苑","南苑","b","c",5,NOW+100000,1,"mtr");
+        var journey=new Journey(original.id(),DIM,original.revision(),"滨海北","甘地",NOW,original.arrival(),1,original.legs(),List.of(walk),0);
+        var player=UUID.randomUUID();var tracker=new JourneyTracker(journey);
+        // Arrange the preceding completed ride; the tested transition itself uses only native passenger data.
+        tracker.correct("next");assertEquals(JourneyTracker.Phase.WALKING,tracker.state(false).phase());
+        var leg=journey.legs().getLast();
+        var wrong=new Riding(leg.vehicleId(),leg.routeId(),leg.fromPlatformId(),0,true,new RunKey("wrong",0,0,0));
+        assertEquals(JourneyTracker.Phase.WALKING,tracker.update(new Snapshot(source.catalog(),leg.departure(),source.events(),Map.of(player,wrong)),player).phase());
+        var right=new Riding(leg.vehicleId(),leg.routeId(),leg.fromPlatformId(),0,true,leg.run());
+        var state=tracker.update(new Snapshot(source.catalog(),leg.departure(),source.events(),Map.of(player,right)),player);
+        assertEquals(JourneyTracker.Phase.RIDING,state.phase());assertEquals(1,state.legIndex());assertTrue(state.reliable());
+    }
+    @Test void terminalApproachRetainsBoardedNativeVehicleButDoesNotTrustAnotherVehicleOrExpiredRun() {
+        var source=example();var journey=planner.find(source,"滨海北","甘地",Sort.FASTEST,Settings.defaults()).getFirst();
+        var leg=journey.legs().getFirst();var player=UUID.randomUUID();var tracker=new JourneyTracker(journey);
+        var onboard=new Riding(leg.vehicleId(),leg.routeId(),leg.fromPlatformId(),leg.fromStopIndex(),true,leg.run());
+        tracker.update(new Snapshot(source.catalog(),leg.departure(),source.events(),Map.of(player,onboard)),player);
+        var approach=new Riding(leg.vehicleId(),"","",-1,false,null);
+        var state=tracker.update(new Snapshot(source.catalog(),leg.arrival()-1000,source.events(),Map.of(player,approach)),player);
+        assertTrue(state.reliable());assertEquals("on_route",state.notice());
+        var successor=new Riding(leg.vehicleId(),"successor","other-next-stop",0,false,new RunKey(leg.run().sidingId(),0,leg.run().departureIndex(),leg.run().departureOffset()+1));
+        assertTrue(tracker.update(new Snapshot(source.catalog(),leg.arrival(),source.events(),Map.of(player,successor)),player).reliable());
+        var other=new Riding("other-vehicle","","",-1,false,null);
+        assertFalse(tracker.update(new Snapshot(source.catalog(),leg.arrival(),source.events(),Map.of(player,other)),player).reliable());
+        assertFalse(tracker.update(new Snapshot(source.catalog(),leg.arrival()+30000,source.events(),Map.of(player,approach)),player).reliable());
+    }
 }

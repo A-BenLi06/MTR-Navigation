@@ -1,0 +1,15 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="mtrnavqa"
+version="1"
+displayName="Local MTR Ride QA (development only)"
+[[dependencies.mtrnavqa]]
+modId="mtrnav"
+type="required"
+versionRange="[0,)"
+ordering="AFTER"
+side="CLIENT"
+[[mixins]]
+config="mtrnavqa.mixins.json"

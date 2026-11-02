@@ -36,7 +36,7 @@ MTR：站间物语是一个独立的 Minecraft Transit Railway 导航附属模�
 - **共享审核**：安装新版服务端后，玩家可以提交共享建议，OP等级2及以上管理员审核通过才发布。个人连接与共享库分开；用于服务端查询前需要明确同意，不会自动公开。
 - **看班次**：到发页按线路分组，展开查看已同步的班次，分别显示到达与发车倒计时，以及来源提供的实时／计划标识。
 - **设提醒**：点击具体班次，默认到站前 **9 分钟**提醒，可调为 **1～60 分钟**。关闭窗口后继续更新，顶部通知条在触发时展开并播放一次提示音。
-- **途中导航**：开始行程后，由 HUD 提示下一操作；可手动确认上车、下车或返回上一步，也可调整 HUD 的位置和大小。
+- **途中导航**：安装 Navigation 服务端后，可从 MTR 原生乘客、车辆及班次身份自动识别上车、到站和下车；实际登上下一班时也能自动结束换乘步行。仍保留手动确认、返回上一步与 HUD 位置／大小设置。
 - **地图行程**：可选接入 MTR Map Overlay 1.5.3+，在 Xaero／JourneyMap 高亮精确乘车区段；已完成段保留35%亮度，其他轨道15%。点击地图车站的 **Navigate** 可预填导航终点。
 - **看线路参考**：有换乘路径但暂时找不到可乘班次时，仍展示线路连接，并说明无班次、超出范围或计算未完成；不编造到发时间。
 
@@ -143,7 +143,7 @@ MTR：站间物语是一个独立的 Minecraft Transit Railway 导航附属模�
 
 服务端查询个人连接前会征得同意。服务器只为本人计算，不把个人规则写入共享库或发给其他玩家；该选择按服务器保存，可随时关闭。共享连接优先于个人连接，人工步行时间不会再叠加坐标距离估算，上车余量单独计一次。
 
-步行阶段点击 **已到达，继续** 才进入下一步。接近目标只是提示；规则变化、步行超时或赶不上原班次时会提示重新查询，不自动替换活动行程。
+步行阶段可点击 **已到达，继续**。若 Navigation 服务端可靠确认玩家已登上计划中的下一班真实列车，会自动进入该乘车段；仅接近目标或经过预计步行时间仍不自动推进。规则变化、步行超时或赶不上原班次时会提示重新查询，不自动替换活动行程。
 
 详见[步行换乘与共享管理](docs/walking-transfers.md)，包含数据位置、权限、限制、导入格式及验证范围。
 
@@ -197,7 +197,7 @@ Click a train on the arrivals board to set a reminder, **9 minutes before arriva
 
 Native compatibility mode cannot reliably identify the player's actual train, so journey progress needs manual confirmation. Live and scheduled labels follow the source data. Queries cover passenger rail in the current dimension; a route reference without confirmed train times cannot start a timed journey. Full-day timetables are not included. Optional MTR Map Overlay 1.5.3+ integration highlights native ride sections on Xaero/JourneyMap, dims completed rides to 35% and unused tracks to 15%, and prefills the destination from a station's Navigate action. Exact highlighting requires Overlay's server catalog and an unambiguous native path; walking links and progress within a ride are not drawn as rail geometry.
 
-New queries return up to **five distinct route patterns**, with a default extra-arrival window of **30 minutes** (15 / 30 / 60 / unlimited). Explicit walking links can be managed in-game and imported or exported as JSON. Walking durations and the boarding buffer are counted separately; walking progress requires manual confirmation. Nearby stations are never automatically assumed to have a passable connection.
+New queries return up to **five distinct route patterns**, with a default extra-arrival window of **30 minutes** (15 / 30 / 60 / unlimited). Explicit walking links can be managed in-game and imported or exported as JSON. Walking durations and the boarding buffer are counted separately. Walking can be confirmed manually, or completed automatically when a Navigation server reliably identifies boarding of the intended next train. Nearby stations are never automatically assumed to have a passable connection.
 
 With an updated Navigation server, players may submit proposals for moderators (operator level 2+) to approve. Pending proposals are visible only to their author and authorized moderators. Personal rules require explicit consent before being sent for a private server-side query; they are not published or included in shared audit data. Servers with only the old v1 protocol retain the original rail-only queries. See the [walking guide](docs/walking-transfers.md) for limits and verification details.
 

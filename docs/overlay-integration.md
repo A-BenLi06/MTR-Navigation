@@ -6,6 +6,8 @@
 
 ## 已实现的地图联动
 
+2026-11-03 已完成 NeoForge 单人真实线网／真实列车的自动进度与双地图淡化验证；复现 CLI、原生身份和截图见[实乘验证](validation/runtime-ride-2026-11-03.md)。
+
 客户端安装本 fork 和对应加载器的 MTR Map Overlay **1.5.3+**，服务端也需安装 Overlay 以提供原生目录／路径。NeoForge 与 Fabric 共用适配器；不改变 Navigation 版本号，也不需要修改 Overlay。
 
 1. 在 Xaero 或 JourneyMap 点击车站卡片的 **Navigate**，打开 Navigation 查询页并预填终点；不会自动查询或替换正在执行的行程。

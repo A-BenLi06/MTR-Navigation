@@ -1,0 +1,1550 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "world": "NavRideQa3-20261103",
+  "platform": "NeoForge 21.1.249 / Minecraft 1.21.1 / MTR 4.1.0-beta.2 / Overlay 1.5.3",
+  "result": {
+    "passed": true,
+    "milestones": [
+      "RIDING_0",
+      "MIDDLE",
+      "ALIGHT_0",
+      "WALKING_1",
+      "RIDING_1",
+      "ALIGHT_1",
+      "COMPLETE"
+    ],
+    "journeyId": "18935538-3b60-4490-b1ad-d45c0cc0c9b7",
+    "durationSeconds": 209.89
+  },
+  "samples": [
+    {
+      "name": "boarded-native-leg-0",
+      "rawSha256": "71462f42b58e9f4688cff87c39627451babe8a173f083f59579e9c8e38078514",
+      "serverMillis": 1793638836623,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 0.14499999582767348,
+        "y": -58.0,
+        "x": 8.0,
+        "flying": true
+      },
+      "tracking": {
+        "legIndex": 0,
+        "phase": "RIDING",
+        "notice": "on_route",
+        "reliable": true,
+        "stepIndex": 0
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638849262,
+          "arrival": 1793638899202,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639011731,
+          "arrival": 1793639033801,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {
+        "380df991-f603-344c-a090-369bad2a924a": {
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "platformId": "437f07cb35f4a404",
+          "stopIndex": 0,
+          "atPlatform": true,
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          }
+        }
+      },
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "437f07cb35f4a404",
+          "nextPlatform": "3c8734a478122088",
+          "stopIndex": 2,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 0.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": [
+            {
+              "uuid": "380df991-f603-344c-a090-369bad2a924a",
+              "car": 0,
+              "onVehicle": true
+            }
+          ]
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": true,
+          "onRoute": true,
+          "route": "0",
+          "routeName": "",
+          "platform": "f60919362a7f9745",
+          "nextPlatform": "f60919362a7f9745",
+          "stopIndex": 2,
+          "doors": -1,
+          "departureIndex": 0,
+          "head": {
+            "x": 604.5436333333423,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          1.0
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 1,
+        "lastCoreUpdate": "{\"sidingId\":2357986498088154189,\"vehicleId\":-3930183958427787283,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":0,\"x\":0.35500000417232624,\"y\":1.0,\"z\":-2.469289319043469,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 1
+      }
+    },
+    {
+      "name": "intermediate-native-stop",
+      "rawSha256": "9c47eda6f589c7ebecd52e02d227a7280c0d8810322cd7fe1c5e56a00366df48",
+      "serverMillis": 1793638864623,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 0.14499999582767348,
+        "y": -58.0,
+        "x": 178.07340534267712,
+        "flying": true
+      },
+      "tracking": {
+        "legIndex": 0,
+        "phase": "RIDING",
+        "notice": "alight_next",
+        "reliable": true,
+        "stepIndex": 0
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850447,
+          "arrival": 1793638900387,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639011731,
+          "arrival": 1793639033801,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {
+        "380df991-f603-344c-a090-369bad2a924a": {
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "platformId": "3c8734a478122088",
+          "stopIndex": 1,
+          "atPlatform": true,
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          }
+        }
+      },
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "3c8734a478122088",
+          "nextPlatform": "21b634cf8add9958",
+          "stopIndex": 3,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 210.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": [
+            {
+              "uuid": "380df991-f603-344c-a090-369bad2a924a",
+              "car": 0,
+              "onVehicle": true
+            }
+          ]
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "5df029ac30ba6423",
+          "routeName": "QA Blue Return",
+          "platform": "f60919362a7f9745",
+          "nextPlatform": "d75327f1bc19c0d7",
+          "stopIndex": 0,
+          "doors": -1,
+          "departureIndex": 0,
+          "head": {
+            "x": 660.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          1.0
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 1,
+        "lastCoreUpdate": "{\"sidingId\":2357986498088154189,\"vehicleId\":-3930183958427787283,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":0,\"x\":0.35500000417232624,\"y\":1.0,\"z\":-2.469289319043469,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 1
+      }
+    },
+    {
+      "name": "arrived-native-leg-0",
+      "rawSha256": "5923c319653c026745a4aa2d0149f041544f31a22916cf6d9004bba82fbd6579",
+      "serverMillis": 1793638901623,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 0.14499999582767348,
+        "y": -58.0,
+        "x": 328.0500262048656,
+        "flying": true
+      },
+      "tracking": {
+        "legIndex": 0,
+        "phase": "RIDING",
+        "notice": "alight_now",
+        "reliable": true,
+        "stepIndex": 0
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639011731,
+          "arrival": 1793639033801,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {
+        "380df991-f603-344c-a090-369bad2a924a": {
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "platformId": "21b634cf8add9958",
+          "stopIndex": 2,
+          "atPlatform": true,
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          }
+        }
+      },
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "9d730236294b6589",
+          "routeName": "QA Red Return",
+          "platform": "21b634cf8add9958",
+          "nextPlatform": "3c8734a478122088",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 360.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": [
+            {
+              "uuid": "380df991-f603-344c-a090-369bad2a924a",
+              "car": 0,
+              "onVehicle": true
+            }
+          ]
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "8e5af28b67085f92",
+          "routeName": "QA Blue",
+          "platform": "d75327f1bc19c0d7",
+          "nextPlatform": "f60919362a7f9745",
+          "stopIndex": 1,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 300.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          1.0
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 1,
+        "lastCoreUpdate": "{\"sidingId\":2357986498088154189,\"vehicleId\":-3930183958427787283,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":0,\"x\":0.35500000417232624,\"y\":1.0,\"z\":-2.469289319043469,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 1
+      }
+    },
+    {
+      "name": "transfer-after-native-alighting",
+      "rawSha256": "0438db1282f317f6c767a5f7881c428a47a063ee75884d5b17b4cf0e2f511cb7",
+      "serverMillis": 1793638905623,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": -3.5,
+        "y": -58.0,
+        "x": 330.5,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 1,
+        "phase": "WALKING",
+        "notice": "manual_walk",
+        "reliable": false,
+        "stepIndex": 1
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639011351,
+          "arrival": 1793639033421,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {},
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "9d730236294b6589",
+          "routeName": "QA Red Return",
+          "platform": "21b634cf8add9958",
+          "nextPlatform": "3c8734a478122088",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 360.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "8e5af28b67085f92",
+          "routeName": "QA Blue",
+          "platform": "d75327f1bc19c0d7",
+          "nextPlatform": "f60919362a7f9745",
+          "stopIndex": 1,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 300.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 2,
+        "lastCoreUpdate": "{\"sidingId\":2357986498088154189,\"vehicleId\":-3930183958427787283,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":-1,\"x\":0.35500000417232624,\"y\":1.0,\"z\":-2.469289319043469,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 2
+      }
+    },
+    {
+      "name": "boarded-native-leg-1",
+      "rawSha256": "11dfa944ff9b8f8e9167e637f063ecba4093fe15bd196a9e14020bb2299010b1",
+      "serverMillis": 1793638991124,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 20.134999997913837,
+        "y": -58.0,
+        "x": 308.0,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 1,
+        "phase": "RIDING",
+        "notice": "on_route",
+        "reliable": true,
+        "stepIndex": 2
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639013216,
+          "arrival": 1793639035286,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {
+        "380df991-f603-344c-a090-369bad2a924a": {
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "platformId": "d75327f1bc19c0d7",
+          "stopIndex": 0,
+          "atPlatform": true,
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          }
+        }
+      },
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "437f07cb35f4a404",
+          "nextPlatform": "3c8734a478122088",
+          "stopIndex": 2,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 0.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "8e5af28b67085f92",
+          "routeName": "QA Blue",
+          "platform": "d75327f1bc19c0d7",
+          "nextPlatform": "f60919362a7f9745",
+          "stopIndex": 1,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 300.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": [
+            {
+              "uuid": "380df991-f603-344c-a090-369bad2a924a",
+              "car": 0,
+              "onVehicle": true
+            }
+          ]
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 3,
+        "lastCoreUpdate": "{\"sidingId\":-3881752474979338377,\"vehicleId\":-3467189673338902473,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":0,\"x\":0.36500000208616257,\"y\":1.0,\"z\":-2.4574244767009645,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 3
+      }
+    },
+    {
+      "name": "arrived-native-leg-1",
+      "rawSha256": "b04135f379d3e6f05b8463c4b1e40298d8ee0928d8bd36a480228c89dab27ba7",
+      "serverMillis": 1793639036623,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 20.134999997913837,
+        "y": -58.0,
+        "x": 628.0869713245054,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 1,
+        "phase": "RIDING",
+        "notice": "alight_now",
+        "reliable": true,
+        "stepIndex": 2
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639012546,
+          "arrival": 1793639034616,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {
+        "380df991-f603-344c-a090-369bad2a924a": {
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "platformId": "f60919362a7f9745",
+          "stopIndex": 1,
+          "atPlatform": true,
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          }
+        }
+      },
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "3c8734a478122088",
+          "nextPlatform": "21b634cf8add9958",
+          "stopIndex": 3,
+          "doors": -1,
+          "departureIndex": 0,
+          "head": {
+            "x": 210.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "5df029ac30ba6423",
+          "routeName": "QA Blue Return",
+          "platform": "f60919362a7f9745",
+          "nextPlatform": "d75327f1bc19c0d7",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 660.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": [
+            {
+              "uuid": "380df991-f603-344c-a090-369bad2a924a",
+              "car": 0,
+              "onVehicle": true
+            }
+          ]
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 3,
+        "lastCoreUpdate": "{\"sidingId\":-3881752474979338377,\"vehicleId\":-3467189673338902473,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":0,\"x\":0.36500000208616257,\"y\":1.0,\"z\":-2.4574244767009645,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 3
+      }
+    },
+    {
+      "name": "complete-native-alighting",
+      "rawSha256": "3990856cd505f74de7dce4da98d5bad5fe46d30c6da66afdb006372853cfb11b",
+      "serverMillis": 1793639041124,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 16.5,
+        "y": -58.0,
+        "x": 630.5,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 2,
+        "phase": "COMPLETE",
+        "notice": "",
+        "reliable": true,
+        "stepIndex": 3
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639012546,
+          "arrival": 1793639034616,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {},
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": true,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "3c8734a478122088",
+          "nextPlatform": "21b634cf8add9958",
+          "stopIndex": 3,
+          "doors": -1,
+          "departureIndex": 0,
+          "head": {
+            "x": 219.118288,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "5df029ac30ba6423",
+          "routeName": "QA Blue Return",
+          "platform": "f60919362a7f9745",
+          "nextPlatform": "d75327f1bc19c0d7",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 660.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          0.35
+        ]
+      },
+      "screen": "",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 4,
+        "lastCoreUpdate": "{\"sidingId\":-3881752474979338377,\"vehicleId\":-3467189673338902473,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":-1,\"x\":0.36500000208616257,\"y\":1.0,\"z\":-2.4574244767009645,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 4
+      }
+    },
+    {
+      "name": "transfer-xaero",
+      "rawSha256": "4b9820f2f809469d34a0c2f4d493d7532fa7f29bc15312349292b93ff83346cc",
+      "serverMillis": 1793638906624,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": -3.5,
+        "y": -58.0,
+        "x": 330.5,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 1,
+        "phase": "WALKING",
+        "notice": "manual_walk",
+        "reliable": false,
+        "stepIndex": 1
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639011351,
+          "arrival": 1793639033421,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {},
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "9d730236294b6589",
+          "routeName": "QA Red Return",
+          "platform": "21b634cf8add9958",
+          "nextPlatform": "3c8734a478122088",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 360.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "8e5af28b67085f92",
+          "routeName": "QA Blue",
+          "platform": "d75327f1bc19c0d7",
+          "nextPlatform": "f60919362a7f9745",
+          "stopIndex": 1,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 300.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "xaero.map.gui.GuiMap",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 2,
+        "lastCoreUpdate": "{\"sidingId\":2357986498088154189,\"vehicleId\":-3930183958427787283,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":-1,\"x\":0.35500000417232624,\"y\":1.0,\"z\":-2.469289319043469,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 2
+      }
+    },
+    {
+      "name": "transfer-journeymap",
+      "rawSha256": "81749432820bd61a757d8b2d15f57d268aa4255f6a36b13bcb7968e93c003521",
+      "serverMillis": 1793638907623,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": -3.5,
+        "y": -58.0,
+        "x": 330.5,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 1,
+        "phase": "WALKING",
+        "notice": "manual_walk",
+        "reliable": false,
+        "stepIndex": 1
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639011351,
+          "arrival": 1793639033421,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {},
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": false,
+          "onRoute": true,
+          "route": "9d730236294b6589",
+          "routeName": "QA Red Return",
+          "platform": "21b634cf8add9958",
+          "nextPlatform": "3c8734a478122088",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 360.5,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "8e5af28b67085f92",
+          "routeName": "QA Blue",
+          "platform": "d75327f1bc19c0d7",
+          "nextPlatform": "f60919362a7f9745",
+          "stopIndex": 1,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 300.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          1.0
+        ]
+      },
+      "screen": "journeymap.client.ui.fullscreen.Fullscreen",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 2,
+        "lastCoreUpdate": "{\"sidingId\":2357986498088154189,\"vehicleId\":-3930183958427787283,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":-1,\"x\":0.35500000417232624,\"y\":1.0,\"z\":-2.469289319043469,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 2
+      }
+    },
+    {
+      "name": "complete-xaero",
+      "rawSha256": "acbd657cb4fed0d5bc51d2ea657225e3b9d466954c9baea9378d42c5e4c7bf7a",
+      "serverMillis": 1793639042624,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 30.5,
+        "y": -63.0,
+        "x": 330.5,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 2,
+        "phase": "COMPLETE",
+        "notice": "",
+        "reliable": true,
+        "stepIndex": 3
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639012546,
+          "arrival": 1793639034616,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {},
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": true,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "3c8734a478122088",
+          "nextPlatform": "21b634cf8add9958",
+          "stopIndex": 3,
+          "doors": -1,
+          "departureIndex": 0,
+          "head": {
+            "x": 236.0743480000001,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "5df029ac30ba6423",
+          "routeName": "QA Blue Return",
+          "platform": "f60919362a7f9745",
+          "nextPlatform": "d75327f1bc19c0d7",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 660.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          0.35
+        ]
+      },
+      "screen": "xaero.map.gui.GuiMap",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 4,
+        "lastCoreUpdate": "{\"sidingId\":-3881752474979338377,\"vehicleId\":-3467189673338902473,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":-1,\"x\":0.36500000208616257,\"y\":1.0,\"z\":-2.4574244767009645,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 4
+      }
+    },
+    {
+      "name": "complete-journeymap",
+      "rawSha256": "72255d34cd45c8b120785e2b2f8bda50013561e10b8f7c770b32610e2d118864",
+      "serverMillis": 1793639044124,
+      "playerUuid": "380df991-f603-344c-a090-369bad2a924a",
+      "player": {
+        "z": 30.5,
+        "y": -63.0,
+        "x": 330.5,
+        "flying": false
+      },
+      "tracking": {
+        "legIndex": 2,
+        "phase": "COMPLETE",
+        "notice": "",
+        "reliable": true,
+        "stepIndex": 3
+      },
+      "legs": [
+        {
+          "run": {
+            "sidingId": "20b9403a13b6344d",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 11803594
+          },
+          "vehicleId": "20b9403a13b6344d:c9752e8347f91fed",
+          "routeId": "cad2f5329fab3ac2",
+          "fromStationId": "494569e7a256bda5",
+          "toStationId": "23423cb842ffa3d1",
+          "fromPlatformId": "437f07cb35f4a404",
+          "toPlatformId": "21b634cf8add9958",
+          "fromStopIndex": 0,
+          "toStopIndex": 2,
+          "direction": "QA Transfer|换乘",
+          "departure": 1793638850527,
+          "arrival": 1793638900467,
+          "realtime": true,
+          "viaStations": [
+            "2d2c6a5c9091d5f3"
+          ]
+        },
+        {
+          "run": {
+            "sidingId": "ca213eb0bedcf777",
+            "tripIndex": 1,
+            "departureIndex": 0,
+            "departureOffset": 18641601
+          },
+          "vehicleId": "ca213eb0bedcf777:cfe2115cafbb6837",
+          "routeId": "8e5af28b67085f92",
+          "fromStationId": "23423cb842ffa3d1",
+          "toStationId": "1de34b7597f20c9a",
+          "fromPlatformId": "d75327f1bc19c0d7",
+          "toPlatformId": "f60919362a7f9745",
+          "fromStopIndex": 0,
+          "toStopIndex": 1,
+          "direction": "QA Destination|终点",
+          "departure": 1793639012546,
+          "arrival": 1793639034616,
+          "realtime": true,
+          "viaStations": []
+        }
+      ],
+      "nativeRiders": {},
+      "vehicles": [
+        {
+          "id": "c9752e8347f91fed",
+          "siding": "20b9403a13b6344d",
+          "moving": true,
+          "onRoute": true,
+          "route": "cad2f5329fab3ac2",
+          "routeName": "QA Red",
+          "platform": "3c8734a478122088",
+          "nextPlatform": "21b634cf8add9958",
+          "stopIndex": 3,
+          "doors": -1,
+          "departureIndex": 0,
+          "head": {
+            "x": 260.3766506666674,
+            "y": -59.0,
+            "z": 0.5
+          },
+          "riders": []
+        },
+        {
+          "id": "cfe2115cafbb6837",
+          "siding": "ca213eb0bedcf777",
+          "moving": false,
+          "onRoute": true,
+          "route": "5df029ac30ba6423",
+          "routeName": "QA Blue Return",
+          "platform": "f60919362a7f9745",
+          "nextPlatform": "d75327f1bc19c0d7",
+          "stopIndex": 0,
+          "doors": 1,
+          "departureIndex": 0,
+          "head": {
+            "x": 660.5,
+            "y": -59.0,
+            "z": 20.5
+          },
+          "riders": []
+        }
+      ],
+      "opacityByRoute": {
+        "9d730236294b6589": [
+          0.15
+        ],
+        "cad2f5329fab3ac2": [
+          0.35
+        ],
+        "5df029ac30ba6423": [
+          0.15
+        ],
+        "8e5af28b67085f92": [
+          0.35
+        ]
+      },
+      "screen": "journeymap.client.ui.fullscreen.Fullscreen",
+      "paused": false,
+      "ridingDiagnostics": {
+        "coreUpdates": 4,
+        "lastCoreUpdate": "{\"sidingId\":-3881752474979338377,\"vehicleId\":-3467189673338902473,\"ridingEntities\":[{\"clientId\":\"380df991-f603-344c-a090-369bad2a924a\",\"ridingCar\":-1,\"x\":0.36500000208616257,\"y\":1.0,\"z\":-2.4574244767009645,\"isOnGangway\":false,\"isDriver\":false,\"manualAccelerate\":false,\"manualBrake\":false,\"manualToggleDoors\":false,\"manualToggleAto\":false,\"doorOverride\":false}]} success=true",
+        "serverPackets": 4
+      }
+    }
+  ],
+  "screenshots": {
+    "boarded-native-leg-0.png": "d35e08432ad100e7ef606712ea5fd61541414f6cb23b59e3b401a535e085d514",
+    "intermediate-native-stop.png": "ef5184bb08d5ee8ddbb142359d40bdcff7da164083e7ea37dfa838e5106a9744",
+    "arrived-native-leg-0.png": "329e8d69f77bb66dfabcfd7d571caf2964b98184381716877a65312c59a16084",
+    "transfer-after-native-alighting.png": "81e540ab1ced27fe05e0dd267c8b4fd84798001a3b55c9cd2333d551ce3b578d",
+    "boarded-native-leg-1.png": "6135614c3bc84a403b4acfcf212f4400a7b3a4857a236c29bf5a099259065139",
+    "arrived-native-leg-1.png": "4bc674f596096ba9c42a3200403ada4789224da0f03640122b174fb186828657",
+    "complete-native-alighting.png": "98c14dd0ef83fd9a69a71ad260f84c3a3eae057e89bae2c617b4c139fafe5604",
+    "transfer-xaero.png": "b3e06fab8d347fc2e6807f9bb00397b87544cd373958ad4682b8ef66c2647704",
+    "transfer-journeymap.png": "43dffacd63bf31153b7febd488ed8b36d03c95f5fc2421a943cedde722b33d17",
+    "complete-xaero.png": "5dde0b4bf953bda20a3eba800048b9fca32ba8e62890c07b5982df09ebb489cc",
+    "complete-journeymap.png": "8c7fb033e509f945a2fd2e826b5f916c174448aec13287ffade74560668612dd"
+  },
+  "sourceSha256": {
+    "src/main/java/io/github/teamcreating/mtrnav/core/JourneyTracker.java": "2ea5314aafd7cfd99766e7e8e4aa34d87a404f4a0f36edc5734abef01256eb4a",
+    "src/main/java/io/github/teamcreating/mtrnav/server/MtrCoreReader.java": "a471ccb9980d1421f1c9a8134e57403ead57bcf52f22a72227b9070c74ef06bd",
+    "src/main/java/io/github/teamcreating/mtrnav/server/NativeTerminalStops.java": "50d9119cafb312b127fc485a4117e92d2f4100a931d938d1fe2bd3bb13f12477",
+    ".cache/downloads/MTR-neoforge-4.1.0-beta.2+1.21.1.jar": "ff2b753d03f2bcc000d053a9014e4250c8ba720daa9b69b6899fe7dc26be1efa",
+    ".cache/downloads/CRTools-MTR-Map-Overlay-1.5.3-MC1.21.1-MTR4.1.0-beta.2-neoforge.jar": "bd959645ab86317197aa78ddbe79c8d3c58f510c102920ca054b809cfbc42a76"
+  },
+  "sampling": {
+    "counts": {
+      "WAITING": 2,
+      "RIDING": 109,
+      "WALKING": 82,
+      "COMPLETE": 4
+    },
+    "unreliableRidingSamples": 0,
+    "scriptCorrectionCalls": 0,
+    "method": "CLI body/keys and original game/MTR APIs; no tracker correction endpoint"
+  }
+}

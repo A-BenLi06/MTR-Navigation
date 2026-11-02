@@ -1,0 +1,1 @@
+{"required":true,"minVersion":"0.8","package":"io.github.teamcreating.mtrnav.qa.mixin","compatibilityLevel":"JAVA_21","mixins":["RidingPacketProbe","RidingCoreProbe"],"injectors":{"defaultRequire":1}}

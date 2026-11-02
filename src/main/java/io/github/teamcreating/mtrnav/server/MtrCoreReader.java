@@ -16,6 +16,7 @@ public final class MtrCoreReader {
     private final Class<?> consumerType;
     private final Method iterateArrivals;
     private final Field platformIndexInRoute;
+    private final NativeTerminalStops terminalStops;
 
     public MtrCoreReader() {
         try {
@@ -28,6 +29,7 @@ public final class MtrCoreReader {
             iterateArrivals.setAccessible(true);
             platformIndexInRoute = Class.forName("org.mtr.core.data.VehicleExtraData$VehiclePlatformRouteInfo").getDeclaredField("platformIndexInRoute");
             platformIndexInRoute.setAccessible(true);
+            terminalStops = new NativeTerminalStops();
         } catch (ReflectiveOperationException e) {
             throw new IllegalStateException("MTR Navigation requires the verified MTR 4.1.0-beta.2 Core interface", e);
         }
@@ -66,6 +68,7 @@ public final class MtrCoreReader {
         var events = new ArrayList<StopEvent>();
         for (var siding : simulator.sidings) {
             if (siding.getTransportMode() != TransportMode.TRAIN || siding.area == null) continue;
+            int firstEvent = events.size();
             var ids = new LinkedHashSet<Long>();
             for (var route : siding.area.routes) if (validRoutes.contains(id(route))) for (var stop : route.getRoutePlatforms()) {
                 if (stop.getPlatform() != null) ids.add(stop.getPlatform().getId());
@@ -87,6 +90,8 @@ public final class MtrCoreReader {
                 try { iterateArrivals.invoke(siding, now, platform, 120_000L, settings.horizonHours() * 3_600_000L, callback); }
                 catch (ReflectiveOperationException e) { throw new IllegalStateException("Native arrivals bridge failed", e); }
             }
+            terminalStops.append(siding, events, firstEvent);
+            if (events.size() > MAX_EVENTS) throw new IllegalStateException("MTR navigation event budget exceeded");
         }
         var eventsByVehicle = new HashMap<String, List<StopEvent>>();
         for (var event : events) if (!event.vehicleId().isEmpty()) eventsByVehicle.computeIfAbsent(event.vehicleId(), ignored -> new ArrayList<>()).add(event);
@@ -99,20 +104,24 @@ public final class MtrCoreReader {
             int index = -1;
             if (siding.area != null) try { index = platformIndexInRoute.getInt(siding.area.getVehiclePlatformRouteInfo(extra.getStopIndex())); }
             catch (IllegalAccessException e) { throw new IllegalStateException(e); }
-            final int nativeIndex = index;
+            // Core's platformIndexInRoute is the FROM ordinal of the current edge (ix - 1),
+            // whereas getNextPlatformId and arrival events refer to its TO stop.
+            final int nativeIndex = index >= 0 && index < Integer.MAX_VALUE ? index + 1 : -1;
             boolean doorsOpen = !vehicle.isMoving() && extra.getDoorMultiplier() > 0;
             var atStop = vehicleEvents.stream().filter(e -> e.realtime() && doorsOpen && e.arrival() <= now + 500 && e.departure() >= now - 500
                             && (e.platformId().equals(Long.toHexString(extra.getThisPlatformId())) || e.platformId().equals(Long.toHexString(extra.getNextPlatformId()))))
                     .sorted(Comparator.comparingLong(StopEvent::arrival)).toList();
-            StopEvent target = atStop.size() == 1 ? atStop.getFirst() : null;
-            boolean atPlatform = target != null;
+            var currentRouteStops = atStop.stream().filter(e -> e.routeId().equals(Long.toHexString(extra.getThisRouteId()))).toList();
+            StopEvent target = currentRouteStops.size() == 1 ? currentRouteStops.getFirst() : atStop.size() == 1 ? atStop.getFirst() : null;
+            boolean atPlatform = !atStop.isEmpty();
             if (target == null && !doorsOpen) {
                 target = vehicleEvents.stream().filter(e -> e.realtime() && e.departure() >= now
                                 && e.stopIndex() == nativeIndex && e.routeId().equals(Long.toHexString(extra.getThisRouteId()))
                                 && e.platformId().equals(Long.toHexString(extra.getNextPlatformId())))
                         .min(Comparator.comparingLong(StopEvent::arrival)).orElse(null);
             }
-            var riding = target == null ? new Riding(id, "", "", -1, false, null)
+            String nativeStop = atStop.stream().map(StopEvent::platformId).distinct().count() == 1 ? atStop.getFirst().platformId() : "";
+            var riding = target == null ? new Riding(id, "", nativeStop, -1, atPlatform && !nativeStop.isEmpty(), null)
                     : new Riding(id, target.routeId(), target.platformId(), target.stopIndex(), atPlatform, target.run());
             extra.iterateRidingEntities(entity -> { if (entity.isOnVehicle()) riders.put(entity.uuid, riding); });
         });
