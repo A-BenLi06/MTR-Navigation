@@ -12,7 +12,7 @@
 
 1. 在 Xaero 或 JourneyMap 点击车站卡片的 **Navigate**，打开 Navigation 查询页并预填终点；不会自动查询或替换正在执行的行程。
 2. 选择有班次的方案并开始导航后，适配器按原生线路 ID、完整有向停站序列、上下车站台及停靠序号校验，再调用 Overlay `resolve`。Navigation 与 Overlay 的修订号独立，提交视图使用 Overlay 修订号。
-3. 精确乘车轨道保持原色，未使用轨道／线路淡化至 **15%**。当前乘车段和后续段保持可见；下车继续进入下一段后，完成段淡化至 **35%**。返回上一步会恢复相应区段；末段完成后所有行程段淡化。列车图标由 Overlay 保持原样。
+3. 导航区间使用原线路色的加粗实线（2.25倍线宽）；无关线网使用0.75倍细灰线、**30%**不透明度，保留地图上下文。下车进入下一段后，完成段缩为1.2倍线宽、**35%**不透明度；返回上一步恢复对应区段，末段完成后全部淡化。站点仅保留所选精确停靠范围内的车站，重复站台按出现序号取范围。列车和车站图标仍由 Overlay 原样绘制。
 4. 取消、断线、切服、切维度、目录过期或身份不一致时关闭本模组的视图；其他 provider 的视图不受影响。后台迟到结果带有会话代次校验，不能恢复已取消的高亮。关闭查询界面仍保留导航。
 
 **显示边界**：进度来自 `JourneyTracker` 已确认的乘车段，不按时间／玩家坐标推测同一乘车段内的轨道位置。人工步行不生成轨道连线。重复经过同一区间时未完成段优先，避免提前淡化。没有 Overlay 服务端目录、原生站台身份未补齐、没有原生路径或多条路径歧义时，活动行程页显示状态；不会猜选第一条路径或另算几何最短路。当前没有路径候选选择界面。
@@ -21,7 +21,7 @@
 
 开发依赖由 `python tools/download_dependencies.py` 或 `python tools/download_overlay_api.py` 从 SHA256 固定的 Overlay 1.5.3 正式附件提取，保存于 `.cache/downloads/mtrmap-api-1.0.0.jar`。两个加载器均为 `compileOnly`，**不将 API 或 Overlay 实现打进 Navigation JAR**。旧版 Overlay 的只读车站回退仍保留。
 
-自动回归见 `client/OverlayNavigationTest.java`：使用正式发布 JAR 的 `SectionResolver` 和 `ViewRegistry` 验证精确重复停靠、独立修订、淡化、取消／迟到结果、重连、步行、多路径及原生身份检查；`OverlayAbsenceTest` 用隔离类加载器验证未安装 Overlay 的情况。最新游戏验证范围见[验证记录](validation/overlay-integration.md)。
+自动回归见 `client/OverlayNavigationTest.java`：使用正式发布 JAR 的 `SectionResolver` 和 `ViewRegistry` 验证精确重复停靠、独立修订、淡化、取消／迟到结果、重连、步行、多路径及原生身份检查；`OverlayAbsenceTest` 用隔离类加载器验证未安装 Overlay 的情况。最新游戏验证范围见[实乘验证](validation/runtime-ride-2026-11-03.md)与[导航线网样式验证](validation/navigation-style-2026-11-03.md)。
 
 ## 两个模组各自负责什么
 

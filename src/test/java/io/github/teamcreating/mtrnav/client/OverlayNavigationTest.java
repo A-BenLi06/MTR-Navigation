@@ -63,8 +63,35 @@ class OverlayNavigationTest {
         assertEquals(List.of("a1", "a2"), view.spans().stream().map(SelectedSpan::routeId).toList());
         assertEquals(.2, view.spans().getFirst().rail().from()); assertEquals(.8, view.spans().getFirst().rail().to());
         assertEquals(42, view.catalogRevision()); assertEquals(Unmatched.DIM, view.unmatched());
-        assertEquals(.15, view.unmatchedOpacity()); assertTrue(view.showTrains());
+        assertEquals(.3, view.unmatchedOpacity()); assertTrue(view.showTrains());
         assertEquals("mtrnav.map_ready", bridge.status());
+    }
+    @Test void navigationUsesNeutralContextAndBoldSolidNativeColoursOnlyOnSelectedSpans() throws Exception {
+        tick(0, JourneyTracker.Phase.WAITING);
+        var request = client.request();
+        var context = request.routeStyles().get("a1");
+        assertEquals(0x98a2af, context.color().orElseThrow());
+        assertEquals(.75, context.widthScale()); assertEquals(1, context.opacity());
+        assertEquals(Pattern.SOLID, context.pattern());
+        var selected = request.spanStyles().getFirst().style();
+        assertEquals(client.catalog.routes().getFirst().color(), selected.color().orElseThrow());
+        assertEquals(2.25, context.widthScale() * selected.widthScale());
+        assertEquals(Pattern.SOLID, selected.pattern());
+        tick(1, JourneyTracker.Phase.TRANSFER);
+        var completed = client.request().spanStyles().getFirst().style();
+        assertEquals(.35, completed.opacity());
+        assertEquals(1.2, context.widthScale() * completed.widthScale(), .00001);
+    }
+    @Test void stationFilterUsesOnlyTheExactSelectedStopOccurrences() throws Exception {
+        var first = client.catalog.routes().getFirst();
+        var stops = List.of(new Stop(0,"1","outside",""),new Stop(1,"2","outside2",""),
+                new Stop(2,"1","origin",""),new Stop(3,"3","transfer",""));
+        var second = client.catalog.routes().getLast();
+        replaceCatalog(43, List.of(new Route(first.id(),first.name(),"",first.color(),first.type(),stops,first.paths()),
+                new Route(second.id(),second.name(),"",second.color(),second.type(),
+                        List.of(new Stop(0,"4","transfer",""),new Stop(1,"5","destination","")),second.paths())));
+        tick(0, JourneyTracker.Phase.WAITING);
+        assertEquals(Set.of("origin","transfer","destination"),client.request().stationIds());
     }
     @Test void progressDimsCompletedRideAndPreviousRestoresItWithoutPerTickRequests() throws Exception {
         tick(0, JourneyTracker.Phase.WAITING); tick(0, JourneyTracker.Phase.RIDING);

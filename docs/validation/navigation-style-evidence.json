@@ -1,0 +1,490 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "result": {
+    "passed": true,
+    "milestones": [
+      "RIDING_0",
+      "MIDDLE",
+      "ALIGHT_0",
+      "WALKING_1",
+      "RIDING_1",
+      "ALIGHT_1",
+      "COMPLETE"
+    ],
+    "journeyId": "91f30633-2ee4-4920-af70-b7a5d3fe110e",
+    "durationSeconds": 181.0
+  },
+  "styles": [
+    {
+      "stage": "boarded-native-leg-0",
+      "tracking": {
+        "phase": "RIDING",
+        "legIndex": 0,
+        "notice": "on_route",
+        "reliable": true
+      },
+      "screen": "",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 2.25,
+          "opacity": 1.0,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 2.25,
+          "opacity": 1.0,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "1cdbde9262ce5b78dfd74d99a3b2346497623687d2efa9a36548959515dd348d",
+      "imageSha256": "ff8d3c2ad57ef04d84e2b1b74f6832494e6b42b5ee6c4159f701e08d92bb46b6"
+    },
+    {
+      "stage": "transfer-after-native-alighting",
+      "tracking": {
+        "phase": "WALKING",
+        "legIndex": 1,
+        "notice": "manual_walk",
+        "reliable": false
+      },
+      "screen": "",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 2.25,
+          "opacity": 1.0,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "0968fff1c4352f4824f27831ff203528a5e42df920ed8b184de27eac0b185598",
+      "imageSha256": "71f3eba0c3f09592d74f284de6d8298251963cf72ce4c7f4944117468f7dbab7"
+    },
+    {
+      "stage": "boarded-native-leg-1",
+      "tracking": {
+        "phase": "RIDING",
+        "legIndex": 1,
+        "notice": "on_route",
+        "reliable": true
+      },
+      "screen": "",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 2.25,
+          "opacity": 1.0,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "71f39951dac60fba3d7927c84fe147116a0eb5fdd51ab86f21b4c603fc2bfbd7",
+      "imageSha256": "100d01c880103de28623ad2026a921ac68dc898787174761927920a3d0303005"
+    },
+    {
+      "stage": "complete-native-alighting",
+      "tracking": {
+        "phase": "COMPLETE",
+        "legIndex": 2,
+        "notice": "",
+        "reliable": true
+      },
+      "screen": "",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "124bb3017041adeaf8f13b3f25b181ff53368144f74ea8bac15c96d6c7967888",
+      "imageSha256": "cba7d6aba7613bc39fe2190309ca94315b53fb9ca0f0fbdeb8eb0537008fa805"
+    },
+    {
+      "stage": "transfer-xaero",
+      "tracking": {
+        "phase": "RIDING",
+        "legIndex": 1,
+        "notice": "alight_next",
+        "reliable": true
+      },
+      "screen": "xaero.map.gui.GuiMap",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 2.25,
+          "opacity": 1.0,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "a90d21fbf79598534b3a218575e60f91d2749f04fe6029d4b159eed55cd7c809",
+      "imageSha256": "da4a2b2499832afda9dcf67d6ebdd6e4c9fe691eb6c122f8e82034794bf7233c"
+    },
+    {
+      "stage": "transfer-journeymap",
+      "tracking": {
+        "phase": "RIDING",
+        "legIndex": 1,
+        "notice": "alight_next",
+        "reliable": true
+      },
+      "screen": "journeymap.client.ui.fullscreen.Fullscreen",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 2.25,
+          "opacity": 1.0,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "da0ab921e1606dfba04b4e905894fcc1f30b7dbd29b520697b353fac86b16f1e",
+      "imageSha256": "448deae3264ad4fd389cee4c25eee543041bd6c860e11a3342c377e8eee1285c"
+    },
+    {
+      "stage": "complete-xaero",
+      "tracking": {
+        "phase": "COMPLETE",
+        "legIndex": 2,
+        "notice": "",
+        "reliable": true
+      },
+      "screen": "xaero.map.gui.GuiMap",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "64a22ca5ffdf4f4eddebc01f170370c3f92d7e2d18572f1bc88bbc8c6f47f8d5",
+      "imageSha256": "79b69309b2b2ebed94b0d28f94e90a141bf85e235e90f5dc7845c2f01582bed4"
+    },
+    {
+      "stage": "complete-journeymap",
+      "tracking": {
+        "phase": "COMPLETE",
+        "legIndex": 2,
+        "notice": "",
+        "reliable": true
+      },
+      "screen": "journeymap.client.ui.fullscreen.Fullscreen",
+      "paused": false,
+      "palette": [
+        {
+          "id": "5df029ac30ba6423",
+          "name": "QA Blue Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "8e5af28b67085f92",
+          "name": "QA Blue",
+          "color": 3770879,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        },
+        {
+          "id": "9d730236294b6589",
+          "name": "QA Red Return",
+          "color": 10003119,
+          "widthScale": 0.75,
+          "opacity": 0.3,
+          "colourWhite": false
+        },
+        {
+          "id": "cad2f5329fab3ac2",
+          "name": "QA Red",
+          "color": 15223627,
+          "widthScale": 1.2000000000000002,
+          "opacity": 0.35,
+          "colourWhite": false
+        }
+      ],
+      "stationIds": [
+        "2d2c6a5c9091d5f3",
+        "1de34b7597f20c9a",
+        "23423cb842ffa3d1",
+        "494569e7a256bda5"
+      ],
+      "rawStateSha256": "e3059a90752e1bd6481e0aa06d02f9b6d9f509822956c5aeae1bfd1a505cbb2b",
+      "imageSha256": "d19e4dd5eefeab109713408ca0940750ed95f608a49a0e153f0c4c21e037114b"
+    }
+  ],
+  "sampling": {
+    "riding": 121,
+    "unreliableRiding": 0
+  },
+  "sourceSha256": {
+    "src/main/java/io/github/teamcreating/mtrnav/client/OverlayNavigation.java": "914500059a4a82061187ccc8b79e22841818a696bc3ae472ff8ba1416d7bbabd",
+    "build/libs/MTR-Navigation-neoforge-0.1.0-alpha.1.jar": "6071e313a9e7e2f1f4e898f2bf5249d3494d4ebf4e3cb7567c670ad4a0a16890",
+    "fabric/build/libs/MTR-Navigation-fabric-0.1.0-alpha.1.jar": "2efd8b18436d8f703345968fac924fcb0882c0ca35d97f064c9c1513d94db736"
+  },
+  "visualPreview": {
+    "method": "Actual cancel versus a newly queried two-train selection, same map zoom/camera vicinity; separate journey from the completed strict ride",
+    "screenshots": [
+      {
+        "name": "overview-xaero",
+        "journeyId": null,
+        "phase": null,
+        "activeViews": 0,
+        "screen": "xaero.map.gui.GuiMap",
+        "paused": false
+      },
+      {
+        "name": "overview-journeymap",
+        "journeyId": null,
+        "phase": null,
+        "activeViews": 0,
+        "screen": "journeymap.client.ui.fullscreen.Fullscreen",
+        "paused": false
+      },
+      {
+        "name": "navigation-xaero",
+        "journeyId": "2f3de553-96ac-421a-9739-b2d63f58b4d3",
+        "phase": "WAITING",
+        "activeViews": 1,
+        "screen": "xaero.map.gui.GuiMap",
+        "paused": false
+      },
+      {
+        "name": "navigation-journeymap",
+        "journeyId": "2f3de553-96ac-421a-9739-b2d63f58b4d3",
+        "phase": "WAITING",
+        "activeViews": 1,
+        "screen": "journeymap.client.ui.fullscreen.Fullscreen",
+        "paused": false
+      }
+    ]
+  }
+}

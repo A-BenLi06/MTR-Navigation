@@ -87,7 +87,7 @@ public final class OverlayNavigation implements OverlaySupport.Adapter {
                     (i < key.completed() ? finished : remaining).addAll(result.spans());
                 }
                 try {
-                    var request = ViewRequest.navigation(world, catalog.revision(), remaining, finished, .35, .15);
+                    var request = navigationStyle(catalog, sections, remaining, finished);
                     view = client.openView(OWNER, "MTR Navigation", Purpose.FOCUS, 0);
                     view.replace(request).whenComplete((result, failure) -> clientThread.execute(() -> {
                         if (token != generation) return;
@@ -99,6 +99,35 @@ public final class OverlayNavigation implements OverlaySupport.Adapter {
         } catch (RuntimeException | LinkageError e) {
             fail("mtrnav.map_unavailable");
         }
+    }
+
+    /** Quiet context, bold native line colours, and only stops on the exact ride occurrences. */
+    static ViewRequest navigationStyle(Catalog catalog, List<RouteSection> sections,
+                                       List<SelectedSpan> remaining, List<SelectedSpan> finished) {
+        var routes = new HashMap<String, Route>();
+        var context = new LinkedHashMap<String, Style>();
+        for (var route : catalog.routes()) {
+            routes.put(route.id(), route);
+            context.put(route.id(), new Style(Optional.of(0x98a2af), 1, .75, Pattern.SOLID));
+        }
+        var stations = new LinkedHashSet<String>();
+        for (var section : sections) {
+            var route = routes.get(section.routeId());
+            for (int i = section.fromStop(); i <= section.toStop(); i++) {
+                var id = route.stops().get(i).stationId();
+                if (!id.isBlank()) stations.add(id);
+            }
+        }
+        var all = new ArrayList<SelectedSpan>(finished); all.addAll(remaining);
+        var styles = new ArrayList<SpanStyle>();
+        for (var span : finished) styles.add(new SpanStyle(span,
+                new Style(Optional.of(routes.get(span.routeId()).color()), .35, 1.6, Pattern.SOLID)));
+        // Local colour overrides restore native colours above the neutral route context.
+        // Remaining wins on repeated/shared intervals, as with ViewRequest.navigation.
+        for (var span : remaining) styles.add(new SpanStyle(span,
+                new Style(Optional.of(routes.get(span.routeId()).color()), 1, 3, Pattern.SOLID)));
+        return new ViewRequest(catalog.world(), catalog.revision(), all, Set.of(), Unmatched.DIM,
+                context, true, stations, styles, .3);
     }
 
     /** Validate the whole ordered stop sequence, including repeated occurrences, before resolving geometry. */
